@@ -25,7 +25,6 @@ class AuthorController extends Controller
             ]);
 
             $authors = json_decode($response->getBody(), true);
-            // dd($authors);
 
             return view('authors.index', compact('authors'));
         } catch (\Exception $e) {
