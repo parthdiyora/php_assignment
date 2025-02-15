@@ -23,6 +23,12 @@ php artisan key:generate
 ```bash
 php artisan serve
 ```
+## Authentication:
+
+### Login Credentials:
+
+- Email: `ahsoka.tano@royal-apps.io`
+- Password: `Kryze4President`
 
 ## CLI Command: `php artisan author:add`
 
