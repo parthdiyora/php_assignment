@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 
 class AuthorController extends Controller
 {
-        private $client;
+    private $client;
 
     public function __construct()
     {
@@ -17,20 +17,32 @@ class AuthorController extends Controller
     // Fetch and display the list of authors
     public function index()
     {
+            return view('authors.index');
+    }
+
+    // Fetch authors data
+    public function fetchAuthors(Request $request)
+    {
         try {
-            $response = $this->client->get(config('app.api_base_url'). "authors", [
+            $response = $this->client->get(config('app.api_base_url') . "authors", [
                 'headers' => [
                     'Authorization' => session('api_token'),
-                ]
+                ],
+                'query' => [
+                    'query' => $request->input('query'),
+                    'order_by' => $request->input('order_by') ?? 'id',
+                    'direction' => $request->input('direction') ?? 'ASC',
+                    'limit' => $request->input('limit'),
+                    'page' => $request->input('page'),
+                ],
             ]);
 
             $authors = json_decode($response->getBody(), true);
-
-            return view('authors.index', compact('authors'));
+            return response()->json($authors);
         } catch (\Exception $e) {
-            return back()->withErrors(['error' => 'Failed to fetch authors.']);
+            return response()->json(['error' => 'Failed to fetch authors.'], 500);
         }
-    }
+    }   
 
     // Display a single author's details and books
     public function show($id)

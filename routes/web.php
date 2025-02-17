@@ -11,6 +11,7 @@ Route::get('/', function () {
 Route::middleware(['auth.middleware'])->group(function () {
     // Author routes
     Route::get('/authors',[AuthorController::class, 'index'] )->name('authors.index');
+    Route::get('/authors/data', [AuthorController::class, 'fetchAuthors'])->name('authors.data');
     Route::get('/authors/{id}', [AuthorController::class, 'show'])->name('authors.show');
     Route::delete('/authors/{id}', [AuthorController::class, 'destroy'])->name('authors.destroy');
 
@@ -21,6 +22,5 @@ Route::middleware(['auth.middleware'])->group(function () {
 
     Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
 });
-
 
 require __DIR__.'/auth.php';
