@@ -45,7 +45,7 @@ class AuthController extends Controller
             ]);
 
             // Store token in Laravel cache
-            Cache::put('api_token', $data['token_key'], now()->addHours(6)); // Store for 6 hours
+            Cache::put('api_token', $data['token_key'], now()->addHours(12)); // Store for 12 hours
 
             return redirect()->route('authors.index');
         } catch (\Exception $e) {
