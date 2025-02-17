@@ -4,8 +4,8 @@
 
 ### Step 1: Clone the Repository
 ```bash
-git clone <repository-url>
-cd php-test-assignment
+git clone https://github.com/parthdiyora/php_assignment.git
+cd php_assignment
 ```
 
 ### Step 2: Install Dependencies
