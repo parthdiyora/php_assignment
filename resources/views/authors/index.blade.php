@@ -47,13 +47,13 @@
             let table = $('#authorsTable').DataTable({
                 processing: true,
                 serverSide: true,
-                searching: false, 
+                searching: false,
                 pageLength: 5,
                 lengthMenu: [5, 10, 25, 50],
                 ajax: function(data, callback) {
                     let apiBaseUrl = "{{ config('app.api_base_url') }}";
                     let baseUrl = "{{ config('app.url') }}"
-    
+
                     let params = {
                         query: $('#searchBox').val(),
                         order_by: data.columns[data.order[0].column].data || "id",
@@ -84,7 +84,9 @@
                 },
                 columns: [
                     { data: "id" },
-                    { data: "first_name" },
+                    { data: "first_name", render: function(data, type, row) {
+                        return `${data} ${row.last_name}`;
+                    }},
                     { data: "birthday", render: function(data) {
                         return new Date(data).toLocaleDateString();
                     }},

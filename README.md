@@ -17,9 +17,16 @@ composer install
 ```bash
 cp .env.example .env
 php artisan key:generate
+php artisan migrate
+```
+### Step 4: Install and Build Frontend Assets
+```bash
+npm install
+npm run build
 ```
 
-### Step 4: Run the Application
+
+### Step 5: Run the Application
 ```bash
 php artisan serve
 ```
