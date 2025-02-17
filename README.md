@@ -13,7 +13,7 @@ cd php_assignment
 composer install
 ```
 
-### Step 3: Configure Environment Variables
+### Step 3: Configure Environment Variables and Run migration
 ```bash
 cp .env.example .env
 php artisan key:generate
@@ -24,7 +24,6 @@ php artisan migrate
 npm install
 npm run build
 ```
-
 
 ### Step 5: Run the Application
 ```bash
